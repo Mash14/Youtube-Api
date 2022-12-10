@@ -16,35 +16,49 @@
 </head>
 <body>
     <div class="container">
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{% url 'search' %}">Youtube Api</a>
+            </div>
+        </nav>
         <h1 class="text-center">Search YouTube Videos</h1>
         <form action="{% url 'search' %}" method="post">
             {% csrf_token %}
 
-            <input type="text" class="form-control" name="search">
-            <button type="submit" name="submit" value="search" class="btn btn-outline-warning">Search</button>
-            <button type="submit" name="submit" value="lucky" class="btn btn-outline-dark" target="_blank">I'm Feeling Lucky</button>
+            <input type="text" class="form-control" name="search" placeholder=" Search for your favorite videos..">
+            <div class="buttons">
+                <button type="submit" name="submit" value="search" class="btn btn-outline-warning">Search</button>
+                <button type="submit" name="submit" value="lucky" class="btn btn-outline-info" target="_blank">I'm Feeling Lucky</button>
+            </div>
         </form>
         
         {% if videos %}
-            <h4>Showing search results for {{query}}</h4>
-        {% endfor %}
+            <h4>Showing search results for "{{query}}"</h4>
+        {% endif %}
+        
         
         <div class="gallery">
             {% for video in videos %}
-                <div class="gallery-item">
-                    <a href="{% url 'searched_video' video.id%}"><img src="{{video.thumbnail}}" title="{{video.title}}"></a>
-                    <h3>{{video.title|slice:":30"}}</h3>
-                    <div class="info">
-                        <a href="{{video.url}}" class="btn btn-success lg" target="_blank">View Youtube</a>
-                        <p>Len:<small class="text-muted"> {{video.time}} min</small></p>              
+            <div class="card text-dark bg-light mb-3" >
+                <!-- <div class="card-header"></div> -->
+                <a href="{% url 'searched_video' video.id%}" class="card-img-top"><img src="{{video.thumbnail}}" title="{{video.title}}" class="img-fluid" style="max-height: 300px;"></a>
+                <div class="card-body">
+                    
+                    <h5 class="card-title">{{video.title|slice:27}}</h5>
+                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                    <div class="details">
+                        <a href="{{video.url}}" class="btn btn-success sm" target="_blank">View Youtube</a>
+                        <p>Length :<small class="text-muted"> {{video.time}} min</small></p>
                     </div>
-                </div> 
+                </div>
+            </div>
             {% empty %}
                 <h2 class="text-center">Enjoy this as you think of what to search</h2>
                 <iframe width="640" height="480" src="https://www.youtube.com/embed/X0tOpBuYasI" frameborder="0" allowfullscreen></iframe>
             {% endfor %}
         </div>
         
+
     </div>
 </body>
 </html>

@@ -16,12 +16,21 @@
 </head>
 <body>
     <div class="container">
+
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{% url 'search' %}">Youtube Api</a>
+            </div>
+        </nav>
+
         <h2>{{video.title}}</h2>
         <iframe width="640" height="480" src="{{video.url}}" frameborder="0" allowfullscreen></iframe>
-        <p>Description : {{video.description}}</p>
-        <p><small class="text-muted">Published On: {{video.publishedAt}}</small></p>
+        <h3>Description :</h3>
+        <p> {{video.description}}</p>
         <p>Channel : {{video.channelTitle}}</p>
-        <p><small>Len : {{video.time}} min - Quality : {{video.definition}}</small></p>
+        <p><small>Length : {{video.time}} min - Quality : {{video.definition}}</small></p>
+        <p><small class="text-muted">Published On: {{video.publishedAt}}</small></p>   
+    
     </div>
 </body>
 </html>

@@ -10,6 +10,7 @@ api_key = config('YOUTUBE_API_KEY')
 
 def search(request):
     videos = list()
+    query = ''
 
     if request.method == 'POST':
         # Search the api to find the video ids 
@@ -94,5 +95,5 @@ def single_item(request,slug='video_id'):
         'time' : int(parse_duration(data['items'][0]['contentDetails']['duration']).total_seconds() // 60),
         'url' : f'https://www.youtube.com/embed/{data["items"][0]["id"]}'
     }
-
+    print(data['items'][0]['snippet']['description'])
     return render(request,'single_item.html',{'video':video})
