@@ -1,0 +1,50 @@
+{% load django_bootstrap5 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>YouTube Search</title>
+    {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Search YouTube Videos</h1>
+        <form action="{% url 'search' %}" method="post">
+            {% csrf_token %}
+
+            <input type="text" class="form-control" name="search">
+            <button type="submit" name="submit" value="search" class="btn btn-outline-warning">Search</button>
+            <button type="submit" name="submit" value="lucky" class="btn btn-outline-dark" target="_blank">I'm Feeling Lucky</button>
+        </form>
+        
+        {% if videos %}
+            <h4>Showing search results for {{query}}</h4>
+        {% endfor %}
+        
+        <div class="gallery">
+            {% for video in videos %}
+                <div class="gallery-item">
+                    <a href="{% url 'searched_video' video.id%}"><img src="{{video.thumbnail}}" title="{{video.title}}"></a>
+                    <h3>{{video.title|slice:":30"}}</h3>
+                    <div class="info">
+                        <a href="{{video.url}}" class="btn btn-success lg" target="_blank">View Youtube</a>
+                        <p>Len:<small class="text-muted"> {{video.time}} min</small></p>              
+                    </div>
+                </div> 
+            {% empty %}
+                <h2 class="text-center">Enjoy this as you think of what to search</h2>
+                <iframe width="640" height="480" src="https://www.youtube.com/embed/X0tOpBuYasI" frameborder="0" allowfullscreen></iframe>
+            {% endfor %}
+        </div>
+        
+    </div>
+</body>
+</html>

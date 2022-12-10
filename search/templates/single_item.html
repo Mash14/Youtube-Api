@@ -1,0 +1,27 @@
+{% load django_bootstrap5 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Search - {{video.title}}</title>
+    {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <h2>{{video.title}}</h2>
+        <iframe width="640" height="480" src="{{video.url}}" frameborder="0" allowfullscreen></iframe>
+        <p>Description : {{video.description}}</p>
+        <p><small class="text-muted">Published On: {{video.publishedAt}}</small></p>
+        <p>Channel : {{video.channelTitle}}</p>
+        <p><small>Len : {{video.time}} min - Quality : {{video.definition}}</small></p>
+    </div>
+</body>
+</html>
