@@ -14,6 +14,15 @@ The project is used to showcase the use of youtube api to show search for videos
 
 ## Installation
 
+- First go to Google Developers page login and create a new project.
+    [Google developer](https://console.developers.google.com/)
+- Then go to Enable Api and Services and find YouTube Data API-v3, enable it, then create credentials then you will get the youtube api key.
+- Git clone the project in you repository
+    ```
+    git clone https://github.com/Mash14/Youtube-Api.git
+    ```
+- 
+
 ## Screenshots
 ![Home Page](/static/img/b4_search.png)
 
