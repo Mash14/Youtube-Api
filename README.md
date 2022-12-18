@@ -4,7 +4,7 @@ The name of the project is Youtube Search
 
 ## Description
 
-The project is used to showcase the use of youtube api to show search for videos and embed and show them in a django project.   
+The project is used to showcase the use of youtube api. To search for videos in youtube, get results of you search and embed them in a django project.   
 
 ## Technologies Used
 
@@ -15,9 +15,8 @@ The project is used to showcase the use of youtube api to show search for videos
 ## Installation
 
 - First go to Google Developers page login and create a new project.
-    ```
     [Google developer](https://console.developers.google.com/)
-    ```
+
 - Then go to Enable Api and Services and find YouTube Data API-v3, enable it, then create credentials then you will get the youtube api key.
 - Git clone the project in you repository
     ```
