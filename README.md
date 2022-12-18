@@ -31,9 +31,6 @@ You can reach the developer by
 - Email: mashalonzo741@gmail.com
 - Tel: 0704485919 
 
-## Project 
-
-
 ## Known Bugs
 
 There are no known bugs 
@@ -41,4 +38,4 @@ There are no known bugs
 ## License and Copyright information
 
 The license information can be found here: [MIT-Lisence](https://opensource.org/licenses/MIT)
-Copyright (c)_17/11/2022__Alan Macharia_
+Copyright (c)_17/12/2022__Alan Macharia_
